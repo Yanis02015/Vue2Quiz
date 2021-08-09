@@ -7,7 +7,7 @@
           cols="12"
           :md="hover ? 7 : hoverSecondPic ? 5 : 6"
         >
-          <v-card 
+          <v-card
             @click="loaded"
             :class="{ 'on-hover': hover }"
             tile
@@ -113,8 +113,9 @@
         tile
         elevation="5"
       >
-        <v-avatar elevation="5" draggable color="black text-h5" size="50">
-          <span class="font-weight-black  white--text">OR</span>
+        <v-avatar class="d-flex flex-column align-center" elevation="5" draggable color="black text-h5" size="50">
+              <span class="font-weight-black  white--text">OR</span>
+              <v-card class="red" style="margin-top: -4px;" height="3" width="25"></v-card>
         </v-avatar>
       </v-card>
     </v-row>
