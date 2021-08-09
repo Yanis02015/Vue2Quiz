@@ -1,10 +1,11 @@
 <template>
   <v-app>
     <v-app-bar
+      elevation="0"
       app
-      color="primary"
+      color="black"
       dark
-      height="60px"
+      height="50px"
     >
       <div class="d-flex align-center">
         <v-img
@@ -13,7 +14,7 @@
           contain
           src="images/vquiz-logo.png"
           transition="scale-transition"
-          width="40"
+          width="27"
         />
 
         <v-img
@@ -23,7 +24,7 @@
           min-width="100"
           src="images/vquiz-name-dark.png"
           transition="scale-transition"
-          width="110"
+          width="100"
         />
       </div>
 
@@ -39,7 +40,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main height="300">
       <router-view/>
     </v-main>
   </v-app>
