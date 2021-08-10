@@ -1,110 +1,49 @@
 <template>
-  <v-container fluid>
-    <v-row :style="heightSize">
-      <v-hover v-model="hoverFirstPic" v-slot="{ hover }">
-        <v-col
-          class="ma-0 pa-0 smooth-resize"
-          cols="12"
-          :md="hover ? 7 : hoverSecondPic ? 5 : 6"
-        >
-          <v-card
-            @click="loaded"
-            :class="{ 'on-hover': hover }"
-            tile
-            elevation="0"
+  <v-container fluid flat>
+    <v-row>
+      <v-col class="ma-0 pa-0" cols="12" md="6" style="filter: blur(8px);">
+        <v-card>
+          <v-img
+            :src="itemFirst.url"
+            gradient="to bottom, rgba(255,255,255,.1), rgba(0,0,0,.6)"
+            :style="imageSize"
+            class="ma-0 pa-0"
           >
-            <v-img
-              src="https://source.unsplash.com/user/erondu/1600x900"
-              gradient="to bottom, rgba(255,255,255,.1), rgba(0,0,0,.6)"
-              :style="imageSize"
-              @load="img1Loaded = true"
-              class="ma-0 pa-0 white--text text-center align-end"
-              :class="{ 'align-end': hover }"
-            >
-              <template v-slot:placeholder>
-                <v-sheet>
-                  <v-skeleton-loader
-                    height="3000"
-                    type="image"
-                  ></v-skeleton-loader>
-                </v-sheet>
-              </template>
+            <template v-slot:placeholder>
+              <v-sheet>
+                <v-skeleton-loader
+                  height="3000"
+                  type="image"
+                ></v-skeleton-loader>
+              </v-sheet>
+            </template>
+          </v-img>
+        </v-card>
+      </v-col>
 
-              <v-card
-                v-if="img1Loaded"
-                class="black white--text title-card mx-auto smooth-resize"
-                :width="hoverFirstPic ? '30%' : '27%'"
-                :style="
-                  hoverFirstPic && !breakpointIsMobile
-                    ? 'margin-bottom: 50%; opacity: 0.8;'
-                    : ''
-                "
-                :class="hoverFirstPic && !breakpointIsMobile ? '' : 'mb-12'"
-              >
-                <v-list-item-content>
-                  <v-list-item-title class="font-weight-black text-h5"
-                    >Villa</v-list-item-title
-                  >
-                  <v-list-item-subtitle>Cluella</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-card>
-            </v-img>
-          </v-card>
-        </v-col>
-      </v-hover>
-
-      <v-hover v-model="hoverSecondPic" v-slot="{ hover }">
-        <v-col
-          class="ma-0 pa-0 smooth-resize"
-          cols="12"
-          :md="hover ? 7 : hoverFirstPic ? 5 : 6"
-        >
-          <v-card
-            @click="loaded"
-            :class="{ 'on-hover': hover }"
-            tile
-            elevation="0"
+      <v-col class="ma-0 pa-0" cols="12" md="6" style="filter: blur(8px);">
+        <v-card>
+          <v-img
+            :src="itemSecond.url"
+            gradient="to bottom, rgba(255,255,255,.1), rgba(0,0,0,.6)"
+            :style="imageSize"
+            class="ma-0 pa-0"
           >
-            <v-img
-              src="https://source.unsplash.com/user/erondu/1600x800"
-              gradient="to bottom, rgba(255,255,255,.1), rgba(0,0,0,.6)"
-              :style="imageSize"
-              @load="img2Loaded = true"
-              class="ma-0 pa-0 text-center align-end"
-            >
-              <template v-slot:placeholder>
-                <v-sheet>
-                  <v-skeleton-loader
-                    height="3000"
-                    type="image"
-                  ></v-skeleton-loader>
-                </v-sheet>
-              </template>
+            <template v-slot:placeholder>
+              <v-sheet>
+                <v-skeleton-loader
+                  height="3000"
+                  type="image"
+                ></v-skeleton-loader>
+              </v-sheet>
+            </template>
+          </v-img>
+        </v-card>
+      </v-col>
 
-              <v-card
-                v-if="img2Loaded"
-                class="black white--text title-card mx-auto smooth-resize"
-                :width="hoverSecondPic ? '30%' : '27%'"
-                :style="
-                  hoverSecondPic && !breakpointIsMobile
-                    ? 'margin-bottom: 50%; opacity: 0.8;'
-                    : ''
-                "
-                :class="hoverSecondPic && !breakpointIsMobile ? '' : 'mb-12'"
-              >
-                <v-list-item-content>
-                  <v-list-item-title class="font-weight-black text-h5"
-                    >Villa</v-list-item-title
-                  >
-                  <v-list-item-subtitle>Cluella</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-card>
-            </v-img>
-          </v-card>
-        </v-col>
-      </v-hover>
-
+      <!-- -->
       <v-card
+        style="position: absolute;"
         :style="`${barrePosition}`"
         :height="breakpointIsMobile ? barreSize : '100%'"
         :width="!breakpointIsMobile ? barreSize : '100%'"
@@ -113,31 +52,36 @@
         tile
         elevation="5"
       >
-        <v-avatar class="d-flex flex-column align-center" elevation="5" draggable color="black text-h5" size="50">
-              <span class="font-weight-black  white--text">OR</span>
-              <v-card class="red" style="margin-top: -4px;" height="3" width="25"></v-card>
-        </v-avatar>
+        <v-btn
+          class="d-flex flex-column align-center white--text"
+          elevation="5"
+          draggable
+          color="black text-h6"
+          height="60"
+        >
+          <router-link class="font-weight-black white--text" to="/quiz">Commencer la partie</router-link>
+          <v-icon right light size="30">
+            mdi-chevron-right
+          </v-icon>
+        </v-btn>
       </v-card>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       heightSize: "height: calc(100vh - 50px);",
-      halfHeightSize: "height: calc(50vh - 8px);",
-      positionNoHover: "left: calc(50% - 8px);",
-      positionOnHoverFirst: "left: calc(50% - 8px + 8.35%);",
-      positionOnHoverSecond: "left: calc(50% - 8px - 8.35%);",
+      halfHeightSize: "height: calc(50vh - 10px);",
+      positionNoHover: "left: calc(50% - 10px);",
       positionOnMobile: "top: calc(50% + 14px);",
-      barreSize: "16px",
+      barreSize: "20px",
       breakpoint: this.$vuetify.breakpoint.name,
-      hoverFirstPic: null,
-      hoverSecondPic: null,
-      img1Loaded: false,
-      img2Loaded: false,
+      img1Idex: 0,
+      img2Idex: 1,
     };
   },
   computed: {
@@ -145,45 +89,28 @@ export default {
       return this.breakpointIsMobile ? this.halfHeightSize : this.heightSize;
     },
     barrePosition() {
-      if (!this.breakpointIsMobile)
-        return this.hoverFirstPic
-          ? this.positionOnHoverFirst
-          : this.hoverSecondPic
-          ? this.positionOnHoverSecond
-          : this.positionNoHover;
+      if (!this.breakpointIsMobile) return this.positionNoHover;
       else return this.positionOnMobile;
     },
     breakpointIsMobile() {
       return this.breakpoint === "sm" || this.breakpoint === "xs";
     },
-    allIsLoaded() {
-      return this.img2Loaded && this.img1Loaded;
+    ...mapState(["resource", "personality"]),
+    itemFirst() {
+      return this.resource[this.img1Idex];
     },
-  },
-  methods: {
-    loaded() {
-      console.log("Votre Choix Est Fait");
+    itemSecond() {
+      return this.resource[this.img2Idex];
     },
   },
 };
 </script>
 
-<style scoped>
-v-card {
-  opacity: 1;
-}
-.smooth-resize {
-  transition: all 1s;
-}
-.barre {
+<style>
+.barre-home {
   position: absolute;
   color: white;
   margin-left: 0;
   margin-right: 0;
-}
-
-.title-card {
-  opacity: 0.5;
-  backdrop-filter: blur(10px);
 }
 </style>
