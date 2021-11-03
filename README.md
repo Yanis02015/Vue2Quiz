@@ -1,24 +1,15 @@
 # vue2-quiz
 
-## Project setup
-```
-npm install
-```
+Application créer à l'issu de mon apprentissage de VueJS et VuetifyJS
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Les interfaces
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Accueil
 
-### Lints and fixes files
-```
-npm run lint
-```
+![Home quiz interface](https://i.ibb.co/ySJPd6S/Capture-d-e-cran-2021-11-03-a-23-24-26.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Fin du quiz
+
+![End quiz interface](https://i.ibb.co/ySJPd6S/Capture-d-e-cran-2021-11-03-a-23-24-26.png)
+
+#### [Lien vers le site du quiz](https://v2quiz.netlify.app)
