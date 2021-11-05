@@ -59,7 +59,7 @@
           color="black text-h6"
           height="60"
         >
-          <router-link class="font-weight-black white--text" to="/quiz">Commencer la partie</router-link>
+          <router-link class="font-weight-black white--text" to="/quiz">Start</router-link>
           <v-icon right light size="30">
             mdi-chevron-right
           </v-icon>
