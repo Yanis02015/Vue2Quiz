@@ -53,13 +53,14 @@
         elevation="5"
       >
         <v-btn
-          class="d-flex flex-column align-center white--text"
+          class="d-flex flex-column align-center white--text font-weight-black"
           elevation="5"
           draggable
           color="black text-h6"
           height="60"
+          to="/quiz"
         >
-          <router-link class="font-weight-black white--text" to="/quiz">Start</router-link>
+          Start
           <v-icon right light size="30">
             mdi-chevron-right
           </v-icon>
